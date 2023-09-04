@@ -4,12 +4,16 @@ import * as Router from "koa-router"
 import * as logger from "koa-logger"
 import * as json from "koa-json"
 
+import { getStatus } from "./helpers/get-status"
+
 const app = new Koa()
 const router = new Router()
 
+export const status = { status: "ok" }
+
 // Hello world
 router.get("/", async (ctx, next) => {
-  ctx.body = { status: "ok" }
+  ctx.body = getStatus()
 
   await next()
 })
